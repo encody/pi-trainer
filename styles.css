@@ -1,0 +1,57 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    background-color: #00f;
+}
+
+a {
+    color: black;
+}
+
+#pi-text, #loading {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#pi-text {
+    font-size: 75vmin;
+}
+
+#pi-hint {
+    opacity: 0.3;
+    cursor: pointer;
+    background-color: black;
+}
+
+#pi-digits-count {
+    display: block;
+    position: fixed;
+    font-size: 10vmin;
+    top: 0;
+    right: 0;
+    margin: 2vmin;
+    cursor: pointer;
+}
+
+#loading {
+    font-size: 10vw;
+    text-align: center;
+    width: 100%;
+}
+
+footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2vmin;
+    margin-bottom: 0.3vmin;
+}
