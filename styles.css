@@ -5,6 +5,7 @@ body, html {
     height: 100%;
     font-family: monospace;
     background-color: #00f;
+    cursor: default;
 }
 
 a {
