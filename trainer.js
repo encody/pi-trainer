@@ -1,6 +1,6 @@
 /*jshint browser: true, devel: true*/
 (function () {
-    var pi, loadingEl, piTextEl, piEntryEl, piDigitsCountEl, piHintEl, entered = "", keys;
+    var pi, loadingEl, piTextEl, piEntryEl, piDigitsCountEl, piHintEl, entered = "", keys, hintShown = false;
 
     keys = {
         48: 0,
@@ -43,15 +43,11 @@
         piDigitsCountEl.addEventListener("click", function () {
             entered = "";
             piEntryEl.innerText = "";
-            piHintEl.innerHTML = "&nbsp;";
-            piHintEl.style.backgroundColor = "";
+            hideHint();
             piDigitsCountEl.innerText = "0";
         });
 
-        piHintEl.addEventListener("click", function () {
-            piHintEl.innerText = pi.charAt(entered.length);
-            piHintEl.style.backgroundColor = "transparent";
-        });
+        piHintEl.addEventListener("click", toggleHint);
 
         console.log("Loading pi from file \"./pi.txt\" - Go ahead and study it if you wish. Thanks to http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html for 100,000 digits of PI!");
         pi = getPI();
@@ -64,11 +60,13 @@
             if (keyCode === 8 && entered.length > 0) {
                 entered = entered.substring(0, entered.length - 1);
                 e.preventDefault();
+                hideHint();
+            } else if (keyCode === 32) {
+                toggleHint();
             } else if (keys[keyCode] !== undefined) {
                 if (pi.charAt(entered.length) === keys[keyCode].toString()) {
                     entered = entered + "" + keys[keyCode].toString();
-                    piHintEl.innerHTML = "&nbsp;";
-                    piHintEl.style.backgroundColor = "";
+                    hideHint();
                 } else {
                     piHintEl.innerText = pi.charAt(entered.length);
                     piHintEl.style.backgroundColor = "transparent";
@@ -88,5 +86,24 @@
         xhr.open("get", "pi.txt", false);
         xhr.send();
         return xhr.responseText;
+    }
+
+    function toggleHint () {
+        if (hintShown)
+            hideHint();
+        else
+            showHint();
+    }
+
+    function showHint () {
+        piHintEl.innerText = pi.charAt(entered.length);
+        piHintEl.style.backgroundColor = "transparent";
+        hintShown = true;
+    }
+
+    function hideHint () {
+        piHintEl.innerHTML = "&nbsp;";
+        piHintEl.style.backgroundColor = "";
+        hintShown = false;
     }
 })();
