@@ -8,6 +8,8 @@ When you open up the π trainer, you will be presented with a screen featuring t
 
 Go ahead and start typing! π Trainer supports up to 100,000 digits of π. If you make a mistake, the correct number will be displayed in place of the caret; you can also click on the caret to display the hint. If you want to start over, click on the digit counter.
 
+A copy of the pi trainer is running live at [http://pi.000a.biz/](http://pi.000a.biz/). Go ahead and check it out.
+
 ## Credits
 Programming by Jacob Lindahl
 
